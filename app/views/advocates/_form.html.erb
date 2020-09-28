@@ -1,0 +1,40 @@
+<%= form_with(model: advocate, local: true) do |form| %>
+<% if advocate.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(advocate.errors.count, "error") %> prohibited this advocate from being saved:</h2>
+
+  <ul>
+    <% advocate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+</div>
+
+<div class="field">
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</div>
+
+<div class="field">
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+</div>
+
+<div class="field">
+  <%= form.label :state %>
+  <%= select_tag :state, options_for_select([["Kerala", "kerala"],["Tamil Nadu", "tamil nadu"],["Karnataka", "karnataka"],["Andhra Pradesh", "andhra pradesh"],["Arunachal Pradesh", "arunachal pradesh"],
+  ["Assam", "assam"],["Bihar", "bihar"],["Chhattisgarh", "chhattisgarh"],["Goa", "goa"],["Gujarat", "gujarat"],
+  ["Haryana", "Haryana"],"Himachal Pradesh", "Jharkhand", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
+  "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand","West Bengal"]),{ prompt: ("State"), id: 'state_id', class: 'state_select' }%>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
