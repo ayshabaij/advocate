@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Document name:</strong>
+  <%= @case_doc.document_name %>
+</p>
+
+<%= link_to 'Edit', edit_case_doc_path(@case_doc) %> |
+<%= link_to 'Back', case_docs_path %>

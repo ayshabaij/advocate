@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_134550) do
+ActiveRecord::Schema.define(version: 2020_10_07_044503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2020_09_24_134550) do
     t.index ["email"], name: "index_advocates_on_email", unique: true
   end
 
+  create_table "case_docs", force: :cascade do |t|
+    t.bigint "advocate_id"
+    t.string "document_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["advocate_id"], name: "index_case_docs_on_advocate_id"
+  end
+
   create_table "juniors", force: :cascade do |t|
     t.bigint "advocate_id"
     t.string "email"
@@ -35,5 +43,6 @@ ActiveRecord::Schema.define(version: 2020_09_24_134550) do
     t.index ["email"], name: "index_juniors_on_email", unique: true
   end
 
+  add_foreign_key "case_docs", "advocates"
   add_foreign_key "juniors", "advocates"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :case_docs
   resources :juniors
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
